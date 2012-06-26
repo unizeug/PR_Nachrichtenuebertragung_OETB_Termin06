@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Tue Jun 26 09:49:24 CEST 2012
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=NUE06.tex
+outputFile=NUE06.pdf
+langSpell=en
+markDer=true
+srcDir=
