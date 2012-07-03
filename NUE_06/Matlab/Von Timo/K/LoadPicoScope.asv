@@ -1,0 +1,37 @@
+function ScopeHandle=LoadPicoScope()
+
+exist
+
+if ~libisloaded('PS3000a')    
+    LoadLibrary('PS3000a.dll','ps3000aApi.h');
+    if ~libisloaded('PS3000a')
+        error('library PS3000a.dll or ps3000aApi.h not found') %check if the library is loaded
+    else        
+        status=1;
+    end 
+else
+    status=1;
+end
+if status==1
+    Zer = libpointer('stringPtr');
+    ScopeHandlePtr = libpointer('int16Ptr',0);
+    g=calllib('PS3000a', 'ps3000aOpenUnit',ScopeHandlePtr,Zer);
+    ScopeHandle=ScopeHandlePtr.value;
+else
+    ScopeHandle =0;
+end
+
+
+if ~libisloaded('PS3000')
+    LoadLibrary('PS3000.dll','PS3000.h');
+    if ~libisloaded('PS3000')
+        error('library PS3000.dll or PS3000.h not found') %check if the library is loaded
+    else        
+        status=1;
+    end 
+else
+    status=1;
+end
+if status==1
+   ScopeHandle=calllib('PS3000', 'ps3000_open_unit');
+end
