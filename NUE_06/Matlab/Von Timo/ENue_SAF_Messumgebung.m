@@ -10,7 +10,7 @@ SAF=1;          % Wenn 0, dann kein SAF
 Simulation=1;   % Wenn 0, dann keine Simulation
 
 %% Datensignal
-a=round(rand(1,1000));
+a=round(rand(1,1000))
 Data=a;
 % Kanalcodierung
 if SAF==1
