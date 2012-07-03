@@ -127,9 +127,46 @@
     \subsection{Aufgabe 2.1 - Aufbau des Versuches}
     \begin{quote}
         
+        Die erste Aufgabe des Praktikums beschäftigt sich fast ausschließlich
+        mit dem Aufbar des Versuches, um den Signalverlauf mit der Matlab
+        Funktion ParallelOUT($[0 1 0 1 0 1 0],100$) zu untersuchen. Dazu wird
+        die D/A-Box, welcher an den Computer angeschlossen und somit über
+        die Matlab Dateien steuerbar ist, als Quelle für jegliche verwendete
+        Signale verwendet. Die D/A-Box besitzt vier Ausgänge, die mit
+        unterschiedlichen Farben gekennzeichnet sind. Der rote Ausgang gibt das
+        DataSignal aus. Dieser kann eine Amplitude von $0V$ oder $5V$ besitzen.
+        Um ihn auf den von uns erwünschte Spannungsbereich von $\pm 1V$ zu
+        bringen, wird dieses Signal zunächst mit einer Gleichspannung von
+        $-2.5V$ aus der variablen Spannungsquelle des Steckbretts addiert und
+        danach mit einem Faktor von $\frac{2}{5}$ gedämpft. Damit erreichen wir
+        den nötigen Spannungsbereich, welcher auf dem A Kanal des PicoScopes
+        kontrolliert wird.\\
+        Der blaue Ausgang der D/A-Box gibt das Clock-Signal wieder. Dieser wird
+        auf den B Kanal des PicoScope geführt und ebenfalls kontrolliert.\\
+        Als nächstes wird der PCM Decoder mit der D/A-Box verbunden, indem das
+        Clock-Signal auch auf den Clock-Eingang des Decoder geführt wird.
+        Weiterhin wird das Signal aus dem grünen Ausgang der Box, welcher das
+        Frame-Signal (FS) wiedergibt, mit dem FS-Eingang des Decoders
+        und die PCM-codierten Datenworte, die aus dem gelben Ausgang der Box
+        entnommen werden können, mit dem PCM Data-Eingang des Decoders
+        kontaktiert. Wichtig ist auch, dass der Schalter auf dem Decoder Modul
+        auf PCM geschaltet ist und nicht auf TDM.\\
+        Somit ist der PCM Decoder mit allen Signalen beliefert, die er zum
+        decodieren braucht. Daher kann man nun das Output Signal verwenden,
+        welcher eine Spannung des Faktors wiedergibt, die für die
+        Verstärkung oder Dämpfung des Rauschens dient. Diese Spannung wird an
+        einem Multiplikator mit dem $-6 dB$ Rauschen multipliziert und an dem
+        Addierer mit Multiplikatoren mit dem DataSignal, welcher bereits auf den korrekten Spannungsbereich
+        eingestellt wurde, addiert. Das Ergebniss dieser Addition wird weiterhin
+        auf den A Kanal des PicosScopes geführt und ausgewertet.\\
         
+        Zuletzt wird das verrauschte Signal überprüft, indem mit der Funktion
+        PCM\_Decod(192) ein Verstärkungsfaktor für das Rauschen gesetzt wird.
+        Das verrauschte Signal wird mithilfe der PicoScope-Software und der
+        Matlab-Funktion ParallelOUT($[0 1 0 1 0 1 0],100$) dargestellt und auch
+        mit den Werten $0$, $128$ und $255$ untersucht.
         
-    \end{quote}  % Ende Subsection PCM Encoder-Kennlinie
+    \end{quote}  % Ende Subsection Aufbau des Versuches
     
     \subsection{Aufgabe 2.2 - Bitfehlermessung}
     \begin{quote}
