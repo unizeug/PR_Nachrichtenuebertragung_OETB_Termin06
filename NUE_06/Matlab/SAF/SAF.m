@@ -2,7 +2,7 @@
 
 function [Values] = SAF(DataSamples, ClkSamples, SFSamples)
 
-version = 1; % unsere Version
+version = 1; % unsere Verion Version
 % version = 2; % Timos Version
 % version = 3; % Dirks Version
 
@@ -15,10 +15,10 @@ if version == 1
     clk(clk<0.5) = 0;
     clk(clk>=0.5) = 1;
 
-    % Vektor erstellen, der eine 1 enthält wo ein neues Bit anfängt
+    % Vektor erstellen, der eine 1 enthï¿½lt wo ein neues Bit anfï¿½ngt
     BitStart = clk(1:end) - [0 clk(1:end-1)];
     
-    % entstandene negative Werte löschen
+    % entstandene negative Werte lï¿½schen
     BitStart(BitStart<0) = 0;
     BitStart(1) = 0;
     
@@ -27,9 +27,7 @@ if version == 1
     
     % Faltung des Datensignals mit dem ansich invertiertem SFF
     invSF = fliplr(SFSamples);
-    sum(SFSamples + invSF);
-    
-    nullen = conv(DataSamples, invSF(1,:)); % 'same' schmeißt nur den mittleren Teil raus, der
+    nullen = conv(DataSamples, invSF(1,:)); % 'same' schmeiï¿½t nur den mittleren Teil raus, der
     einsen = conv(DataSamples, invSF(2,:)); % so lang ist wie DataSamples uns ClkSamples
     sig = einsen-nullen;
     
@@ -37,7 +35,7 @@ if version == 1
     BitStartInd=find(BitStart);
     Values = zeros(1,length(BitStartInd)+1);
 
- % Letzten Abtastpunkt hinzufügen: Letzter index + den abstand zweier BitStarts
+ % Letzten Abtastpunkt hinzufÃ¼gen: Letzter index + den abstand zweier BitStarts
     BitStart( max(BitStartInd) + (BitStartInd(end) - BitStartInd(end-1)) ) = 1;
     BitStartInd = find(BitStart==1);
     

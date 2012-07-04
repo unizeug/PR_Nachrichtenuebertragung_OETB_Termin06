@@ -7,3 +7,7 @@
 /NUE06.pdf
 
 /NUE0.synctex.gz
+*.tmp
+
+*.tmp
+*.gz
