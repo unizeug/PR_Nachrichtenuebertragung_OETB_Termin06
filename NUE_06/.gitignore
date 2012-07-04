@@ -8,3 +8,6 @@
 
 /NUE0.synctex.gz
 *.tmp
+
+*.tmp
+*.gz

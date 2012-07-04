@@ -2,7 +2,7 @@
 
 function [Values] = SAF(DataSamples, ClkSamples, SFSamples)
 
-version = 1; % unsere Version
+version = 1; % meine Version
 % version = 2; % Timos Version
 % version = 3; % Dirks Version
 
@@ -25,14 +25,12 @@ if version == 1
     
     % Faltung des Datensignals mit dem ansich invertiertem SFF
     invSF = fliplr(SFSamples);
-    sum(SFSamples + invSF)
-    
     sig1 = conv(DataSamples, invSF(1,:), 'same'); % 'same' schmeiﬂt nur den mittleren Teil raus, der
     sig2 = conv(DataSamples, invSF(2,:), 'same'); % so lang ist wie DataSamples uns ClkSamples
     sig = sig1-sig2;
     
     % Abtastung und Entscheidung des SAF-Signals
-    edges=find(BitStart);
+    edges=find(BitStart==1);
     Values = zeros(1,length(edges)+1);
 
     for i = 1:length(edges)
@@ -43,13 +41,6 @@ if version == 1
         end
     end
 
-%      [val max_ind] = find(BitStart);
-%     Abgetastet = [DataSamples(max_ind) DataSamples(end)];
-%     Abgetastet(Abgetastet < 0) = 0;
-%     Abgetastet(Abgetastet >=0) = 1;
-% 
-%     Values=  Abgetastet;
-    
 %     if sig(edges(length(edges))+(edges(length(edges))-edges(length(edges)-1))) >= 0
 %         Values(length(edges)+1) = 1;
 %     else
@@ -58,7 +49,7 @@ if version == 1
 
 end
 
-%--------------------------------------------------------------------------
+
 
 if version == 2
     normierteClk = ClkSamples - min(ClkSamples);
@@ -95,8 +86,6 @@ if version == 2
         Values(length(edges)+1) = 0;
     end 
 end
-
-%------------------------------------------------------------------------
 
 if version == 3
 
@@ -148,7 +137,7 @@ if version == 3
 
     % Abtastung und Entscheidung des SAF-Signals
 
-    [val max_ind] = find(BitStart);
+    [val max_ind] = max(BitStart);
     Abgetastet = [DataSamples(max_ind) DataSamples(end)];
     Abgetastet(Abgetastet < 0.5) = 0;
     Abgetastet(Abgetastet >=0.5) = 1;

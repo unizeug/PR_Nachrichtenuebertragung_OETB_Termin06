@@ -122,7 +122,7 @@
 	Der Input besteht aus DataSamples, ClkSamples und SFSamples, welche gegeben
 	sind. der Output dagegen soll dabei der Vektor Values sein, in der die Werte
 	nach dem signalangepasstem Filter eingetragen sein sollen.\\
-	\TODO{hier noch genauer erklären wie die Funktion funzt}
+	\TODO{Boris: kannst du hier noch genauer erklären wie die Funktion funzt?}
 	
 	
 	Nach der Implementierung der SAF-Funktion sollten wir uns mit dem
@@ -130,11 +130,42 @@
 	dazu entwerfen. Die genaue Vorgehensweise ist in dem Abschnitt Durchführung
 	detaliert erläutert. Hier ist das entworfene Blockschaltbild zu dem Versuch:\\
 	
-	\TODO{Blockschaltbild zeichnen und einfügen}
-	
-	
-	
-	
+	\begin{figure}[H]
+        \centering 
+            \includegraphics[scale=0.45, trim = 1.5cm 15cm 1cm 0cm,
+            clip]{./Bilder/Blockschaltbild.png}
+                \caption{Blockschaltbild des Versuchsaufbau}
+        \end{figure}
+        
+    
+    Um die implementierte Funktion SAF zu überprüfen, führten wir mithilfe der
+    vorgegebenen ENue\_SAF\_Messumgebung.m durch, welche das Hauptprogramm der
+    Messung darstellt. Mit dem Parameter Simulation (für die Vorbereitung
+    bleibt dieser bei $1$) kann man entscheiden, ob die Ausgabe und
+    Einstellungen des Steckbretts simuliert werden, oder ob die Daten über die 
+    D/A-Box ausgegeben und per PicoScope eingelesen werden. Mit dem Parameter
+    SAF kann man einstellen, ob mit dem DataSignal eine Sendeformung und dem
+    Empfangssignal eine signalangepasste Filterung durchgeführt wird. Weiterhin
+    sollten wir für die Vorbereitung die Kanal- und Filtereinstellungen nicht
+    verändern, wohingegen der NoiseFaktor, welcher den Faktor des Rauschens
+    einstellt, variiert werden durfte um die Leistung AWGN (additive white
+    Gaussain noise) des Kanals zu beeinflussen.\\
+    Mit der Funktion Channel führt man die Übertragung entweder als
+    Simulation oder auf dem ETT aus, wobei die Einstellungen der Simulation
+    denen des wirklichen Aufbaus entsprechen. Es wird ein Rückgabevektor Y
+    ausgegeben, welcher die Werte nach der Abtastung des Kanals enthält.
+    Wenn SAF deaktiviert ist, wird eine einfache Nachabtastung mit einem
+    Schwellwert von $0V$ durchgeführt.\\
+    Außerdem entspricht der Rückgabewert Noise einer Rauschmessung des Kanals,
+    wozu eine 0-Bit-Folge gesendet und das Empfangssignal ohne SAF oder
+    Nachabtastung als PuciScope-Sample-Signal zurückgegeben wird. Dieses Signal
+    enthält ungefähr $10000$ Samples.\\
+    
+    
+    Zuletzt sollte beantwortet werden, wie der Multiplikationsfaktor für das
+    Rauschen variiert werden müsste, damit die Wasserfallkurve ausreichend ermittelt werden kann.
+    Im Versuch beträgt das Rauschen dabei $-6 dB$.
+    
 	\end{quote}%Theorie
 	% beenden
 
