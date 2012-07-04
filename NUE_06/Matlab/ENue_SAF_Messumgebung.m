@@ -9,9 +9,6 @@ load('SimpleSample.mat')
 SAF=1;          % Wenn 0, dann kein SAF
 Simulation=1;   % Wenn 0, dann keine Simulation
 
-SFFNr = 1; % KKF = -1
-% SFFNr = 2; % KKF = -1/3
-% SFFNr = 3; % KKF = 0
 
 %% Datensignal
 for datenrunden =1:3
@@ -55,9 +52,9 @@ for datenrunden =1:3
             Data=SFF(a,SF0,SF1);    %Fuehrt die Sendeformung durch. Data wird auf den Kanal gegeben.
         end
 
-        xcorr(SF0,SF1)/length(SF0)
+        xcorr(SF0,SF1)/length(SF0);
         %% Kanal- und Filtereinstellungen
-        KanalParameter.NoiseFactor=0; % Werte von 0 bis 255
+        KanalParameter.NoiseFactor=120; % Werte von 0 bis 255
         if SAF==1
             FilterParameter.SF0=SF0;
             FilterParameter.SF1=SF1;
@@ -101,7 +98,7 @@ for datenrunden =1:3
 
         %bestimmt die falsch uebertragenen Bits
         Z = Y - a; 
-        anzahl_fehler = length(find(Z~=0));
+        anzahl_fehler = length(find(Z~=0))
 
         BER_gemessen = anzahl_fehler/length(a);
         BER_errechnet = 0.5 * erfc(Amplitude/(sqrt(8*Varianz)));
