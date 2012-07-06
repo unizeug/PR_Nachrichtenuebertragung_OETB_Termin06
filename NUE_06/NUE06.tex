@@ -199,14 +199,48 @@
     SF1 berechnen lässt. Als Bedingung sollte noch gelten, dass die Bitenergien für
     SF0 und SF1 als Paar für ein $\rho$ gleich sein sollten.\\
     
+    Wir haben uns für die folgenden Signalformpaare entschieden:\\ 
+	
+	Für $\rho = -1$: 
+	\begin{equation*}
+    	\begin{split}
+    		SF_0 &= [-1, \ \ \ 1, -1 \ ]\\
+    		SF_1 &= [ \ \ \ 1, -1, \ \ \ 1 \ ]
+    	\end{split}
+    \end{equation*}
+    
+    Für $\rho = -\frac{1}{3}$: 
+    \begin{equation*}
+        \begin{split}
+            SF_0 &= [-1, -1, \ \ \ 1 \ ]\\
+            SF_1 &= [ \ \ \ 1, -1, -1 \ ]
+        \end{split}
+    \end{equation*}
+    
+    Für $\rho = 0$: 
+    \begin{equation*}
+        \begin{split}
+            SF_0 &= [-1, \ \ \ 1, -1, \ \ \ 1 \ ]\\
+            SF_1 &= [ \ \ \ 1, \ \ \ 1, -1, -1 \ ]
+        \end{split}
+    \end{equation*}
+    
+    
     Als Vorbereitung für den praktischen Teil des Versuchs, sollte eine Funktion
     SAF implementiert werden, welche einen SAF-Empfänger in Matlab realiseren soll.
     Der Input besteht aus DataSamples, ClkSamples und SFSamples, welche gegeben
     sind. der Output dagegen soll dabei der Vektor Values sein, in der die Werte
     nach dem signalangepasstem Filter eingetragen sein sollen.\\
-    \TODO{Boris: kannst du hier noch genauer erklären wie die Funktion funzt?}
-    
-    
+	
+	
+	Um das umzusetzen haben wir zunächst das Clk-Signal auf $0V$ angehoben, auf $1V$ normiert, mit einem Entscheider in
+	Binäre Informationene umgewandelt und so versetzt, dass wir immer den Anfang eines neuen Bits markiert haben.
+	Anschließend haben wir die beiden verwendeten Sendeformen invertiert, jeweils das Signal mit der invertierten Sendeform
+	gefaltet und die Faltung voneinander abgezogen. Zum Schluss haben wir dieses Resultierende Signal an den Zeitpunkten
+	abgetastet an dem das überarbeitete Clocksignal eine eins besitzt.\\
+	Auf diese Weise haben wir das Signalangepasse Filter realisiert.\\
+	   
+
     Nach der Implementierung der SAF-Funktion sollten wir uns mit dem
     Versuchsaufbau und der Durchführung vertraut machen und  ein Blockschaltbild
     dazu entwerfen. Die genaue Vorgehensweise ist in dem Abschnitt Durchführung
