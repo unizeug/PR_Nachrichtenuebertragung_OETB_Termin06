@@ -96,11 +96,6 @@
 \section{Theorie}
 \begin{quote}
 
-
-    
-    
-    \end{quote}%section
-
     Zur Übertragung einer Bitfolge über einen Kanal werden die einzelnen Bits in zu definierenden Sendeformen
     umgewandelt und in dieser Form über den Kanal übertragen. Diese Sendeform kann selbstverständlich während der
     Übertragung durch Rauschen verfälscht werden, was zur folge hat, dass der Empfänger Schwierigkeiten hat zu
@@ -173,8 +168,6 @@
     
 %     In diesem Termin werden wir ausschließlich Bipolare Übertragung mit verschiedenen Sendeformen realisieren und
 %     miteinander vergleichen. Bei der selben Bitenergie ver
-    
-    
     
 	
 \end{quote}%section Theorie
@@ -255,85 +248,8 @@
     Rauschen variiert werden müsste, damit die Wasserfallkurve ausreichend ermittelt werden kann.
     Im Versuch beträgt das Rauschen dabei $-6 dB$.
     
-    \end{quote}%Theorie
-    % beenden
-
-	
-	Zunächst sollten wir uns als Vorbereitung für den Praktikumstermin mit dem
-	Inhalt des Kapitels zu optimalen Empfängerstrukturen aus dem Skript vertraut
-	machen und nachvollziehen können.\\
-	
-	Als nächstes sollte mit Hilfe einer Matlab Datei bipolare Sendeimpulse
-	für eine bipolare Übertragung definiert werden. Diese Sendeimpulse sollten als
-	Vektoren SF0 und SF1 mit $-1$ und $1$ ein Kreuzkorrelationsergebnis von $\rho
-	= 0, -\frac{1}{3}$ oder $-1$ liefern, wobei die Vektoren für $\rho = -1$ und
-	$\rho = -\frac{1}{3}$ drei Werte und für $\rho = 0$ vier Werte besitzen
-	müssen.\\
-	Als Kontrolle dafür, sollte in der Matlab-Datei tatsächlich die
-	Kreuzkorrelation durchgeführt und das Ergebnis untersucht werden. Außerdem wird
-	die Bitenergie $E_B$ der Sendeimpulse berechnet, wobei die Vektoren als
-	zeitkontinuierliche Spannungsverläufe der Dauer $T_B$ angenommen wird, bei
-	denen Die Spannungsamplituden nur $+1\ V$ oder $-1\ V$ betragen können.
-	Es sollte beachtet werden, dass $T_{SF} = 20\mu s$ konstant bleiben und sich
-	somit das $T_B$ mit $T_B = 2 \cdot N \cdot \T_{SF}$ mit N Werten in SF0 bzw.
-	SF1 berechnen lässt. Als Bedingung sollte noch gelten, dass die Bitenergien für
-	SF0 und SF1 als Paar für ein $\rho$ gleich sein sollten.\\
-	
-	Als Vorbereitung für den praktischen Teil des Versuchs, sollte eine Funktion
-	SAF implementiert werden, welche einen SAF-Empfänger in Matlab realiseren soll.
-	Der Input besteht aus DataSamples, ClkSamples und SFSamples, welche gegeben
-	sind. der Output dagegen soll dabei der Vektor Values sein, in der die Werte
-	nach dem signalangepasstem Filter eingetragen sein sollen.\\
-	\TODO{hier noch genauer erklären wie die Funktion funzt}
-	
-	
-	Nach der Implementierung der SAF-Funktion sollten wir uns mit dem
-	Versuchsaufbau und der Durchführung vertraut machen und  ein Blockschaltbild
-	dazu entwerfen. Die genaue Vorgehensweise ist in dem Abschnitt Durchführung
-	detaliert erläutert. Hier ist das entworfene Blockschaltbild zu dem Versuch:\\
-	
-	\begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.45, trim = 1.5cm 15cm 1cm 0cm,
-            clip]{./Bilder/Blockschaltbild.png}
-                \caption{Blockschaltbild des Versuchsaufbau}
-        \end{figure}
-        
+\end{quote}%Vorbereitungsaufgabe beenden
     
-    Um die implementierte Funktion SAF zu überprüfen, führten wir mithilfe der
-    vorgegebenen ENue\_SAF\_Messumgebung.m durch, welche das Hauptprogramm der
-    Messung darstellt. Mit dem Parameter Simulation (für die Vorbereitung
-    bleibt dieser bei $1$) kann man entscheiden, ob die Ausgabe und
-    Einstellungen des Steckbretts simuliert werden, oder ob die Daten über die 
-    D/A-Box ausgegeben und per PicoScope eingelesen werden. Mit dem Parameter
-    SAF kann man einstellen, ob mit dem DataSignal eine Sendeformung und dem
-    Empfangssignal eine signalangepasste Filterung durchgeführt wird. Weiterhin
-    sollten wir für die Vorbereitung die Kanal- und Filtereinstellungen nicht
-    verändern, wohingegen der NoiseFaktor, welcher den Faktor des Rauschens
-    einstellt, variiert werden durfte um die Leistung AWGN (additive white
-    Gaussain noise) des Kanals zu beeinflussen.\\
-    Mit der Funktion Channel führt man die Übertragung entweder als
-    Simulation oder auf dem ETT aus, wobei die Einstellungen der Simulation
-    denen des wirklichen Aufbaus entsprechen. Es wird ein Rückgabevektor Y
-    ausgegeben, welcher die Werte nach der Abtastung des Kanals enthält.
-    Wenn SAF deaktiviert ist, wird eine einfache Nachabtastung mit einem
-    Schwellwert von $0V$ durchgeführt.\\
-    Außerdem entspricht der Rückgabewert Noise einer Rauschmessung des Kanals,
-    wozu eine 0-Bit-Folge gesendet und das Empfangssignal ohne SAF oder
-    Nachabtastung als PuciScope-Sample-Signal zurückgegeben wird. Dieses Signal
-    enthält ungefähr $10000$ Samples.\\
-    
-    
-    Zuletzt sollte beantwortet werden, wie der Multiplikationsfaktor für das
-    Rauschen variiert werden müsste, damit die Wasserfallkurve ausreichend ermittelt werden kann.
-    Im Versuch beträgt das Rauschen dabei $-6 dB$.
-	
-	
-	
-	
-	\end{quote}%Theorie
-	% beenden
-
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
 
@@ -382,9 +298,17 @@
         PCM\_Decod(192) ein Verstärkungsfaktor für das Rauschen gesetzt wird.
         Das verrauschte Signal wird mithilfe der PicoScope-Software und der
         Matlab-Funktion ParallelOUT($[0 1 0 1 0 1 0],100$) dargestellt und auch
-        mit den Werten $0$, $128$ und $255$ untersucht.
+        mit den Werten $0$, $128$ und $255$ untersucht.\\
         
-        \TODO{Foto vom Aufbau einfügen}
+        Der gesamte Versuchsaufbau sah folgendermaßen aus:
+        
+         \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.13, trim = 1.5cm 0cm 1.5cm 0cm,
+            clip]{./Bilder/aufgabe1/Versuchsaufbau.JPG}
+                \caption{Versuchsaufbau}
+        \end{figure}
+        
         
     \end{quote}%Ende Durchführung 1
     
@@ -427,9 +351,61 @@
     \begin{quote}
         
         Da diese Aufgabe nur zum korrekten Aufbau des versuchs gedient hat, gibt
-        es hier keine Ergebnisse zu diskutieren.
+        es hier keine Ergebnisse, worüber inhaltlich diskutiert werden müsste.
+        Daher stellen wir nur die verrauschten Signale dar, die während der
+        Messung mit der Funktion ParallelOut($[0 1 0 1 0 1 0],100$) aufgenommen
+        wurden.\\
         
-    \end{quote}  % Ende Auswertung Aufbau des Versuches
+        Hier das Signal mit additivem Rauschen mit dem Verstärkungsfaktor $0$:
+        
+         \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.65, trim = 1.5cm 9cm 1.5cm 9cm,
+            clip]{./Bilder/aufgabe1/nf0}
+                \caption{Signal + Rauschen (NoiseFactor = 0)}
+        \end{figure}
+        
+        Hier das entstandene Signal mit Rauschen bei einem Verstärkungsfaktor
+        von $128$:
+        
+         \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.65, trim = 1.5cm 9cm 1.5cm 9cm,
+            clip]{./Bilder/aufgabe1/nf128}
+                \caption{Signal + Rauschen (NoiseFactor = 128)}
+        \end{figure}
+        
+        Und zuletzt das Signal mit Rauschen bei einem Verstärkungsfaktor mit
+        $255$:
+        
+        
+         \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.65, trim = 1.5cm 9cm 1.5cm 9cm,
+            clip]{./Bilder/aufgabe1/nf255}
+                \caption{Signal + Rauschen (NoiseFactor = 255)}
+        \end{figure}
+        
+        Es fällt auf, dass die mit relativ großem Rauschen überlagerten Signale
+        bei den Verstärkungsfaktoren $0$ und $255$ ungefähr gleich groß in der Amplitude
+        sind. Diese Beobachtung bestätigt sich mit der Spannungsmessung, welche
+        wir am Output des PCM-Decoders durchgeführt haben. Die
+        Verstärkungsspannung, die ausgegeben wurde, betrug bei dem Faktor $0$
+        genau $2V$ und bei dem Faktor $255$ genau $-2V$. Damit erklärt sich die
+        große Ähnlichkeit der entstehenden Rauschsignale.\\
+        Bei einem Verstärkungsfaktor von $128$ dagegen tritt so gut wie gar kein
+        Rauschen auf und wir erhalten das ursprünglich rauschfreie Signal im
+        Spannungsbereich von $-1$ bis $1V$. Das liegt daran, dass bei $128$ eine
+        Output-Spannung von fast $0V$ aus dem PCM-Decoder ausgegeben werden,
+        wodurch das additive Rauschen ebenfalls zu fast null wird.\\
+        Da die Verstärkungsfaktoren $0$ und $255$ jeweils die invertierten
+        Verstärkungsspannungen produzieren, beschlossen wir, die
+        Bitfehlermessung in der zweiten Aufgabe mit nur einem wachsendem
+        Rauschfaktor von $0$ bis $128$ durch zu führen, da dieser Bereich für
+        eine sinnvolle Auswertung der Wasserfallkurven ausreicht.
+        
+        
+        \end{quote}  % Ende Auswertung Aufbau des Versuches
     
     \subsection{Aufgabe 2.2 - Bitfehlermessung}
     \begin{quote}
