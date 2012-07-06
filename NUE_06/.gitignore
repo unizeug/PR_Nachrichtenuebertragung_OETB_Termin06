@@ -11,3 +11,5 @@
 
 *.tmp
 *.gz
+*NUE0.synctex.gz
+*NUE06.synctex.gz
