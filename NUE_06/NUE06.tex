@@ -98,14 +98,14 @@
 
     Zur Übertragung einer Bitfolge über einen Kanal werden die einzelnen Bits in zu definierenden Sendeformen
     umgewandelt und in dieser Form über den Kanal übertragen. Diese Sendeform kann selbstverständlich während der
-    Übertragung durch Rauschen verfälscht werden, was zur folge hat, dass der Empfänger Schwierigkeiten hat zu
-    entscheiden, ob das Übertragene Bit ursprünglich eine binäre 1 oder eine  binäre 0 dargestellt hat. Das verwendete
+    Übertragung durch Rauschen verfälscht werden, was zur Folge hat, dass der
+    Empfänger Schwierigkeiten hat zu entscheiden, ob das Übertragene Bit ursprünglich eine binäre 1 oder eine  binäre 0 dargestellt hat. Das verwendete
     Sende-Empfangssystem sollte darauf ausgelegt sein, den Empfänger diese Entscheidung so leicht wie möglich zu
     machen.\\
     Als Aussage über die Qualität eines Sende-Empfangssystem dient der ``Signal-To-Noise-Ratio''($SNR$) sowie die
-    Bitfehlerrate($P_{Bit}$). Ist nämlich das SNR, sprich das Verhältnis zwischen Sendeleistung zu Rauschleistung, am
-    Empfänger möglichst groß fällt es dem Entscheider leichter eine Richtige Entscheidung zu treffen. Die Bitfehlerrate
-    sinkt bei großem SNR, da sie die Fehlerrate pro Bit darstellt. Fällt der Entscheider zunehmend richtige
+    Bitfehlerrate ($P_{Bit}$). Ist nämlich das SNR, sprich das Verhältnis
+    zwischen Sendeleistung zu Rauschleistung, am Empfänger möglichst groß, fällt
+    es dem Entscheider leichter eine Richtige Entscheidung zu treffen. Die Bitfehlerrate sinkt bei großem SNR, da sie die Fehlerrate pro Bit darstellt. Fällt der Entscheider zunehmend richtige
     Entscheidungen sinkt daher die Bitfehlerrate.\\
     Das SNR am Entscheider lässt sich folgendermaßen berechnen:
     
@@ -146,7 +146,7 @@
     Abhängig von den Formen der Sendeimpulse kann dieser Koeffizent Werte von $1$, beiden Signalformen stimmen überein,
     bis $-1$, die beiden Signalformen sind genau invertiert zueinander, annehmen.\\
         
-    Nun lässt sich mit einigen Umformungen lässt sich die oben aufgeführte Formel für das Entscheider $SNR$ umformen.\\
+    Nun lässt sich mit einigen Umformungen die oben aufgeführte Formel für das Entscheider $SNR$ umformen.\\
     Für Unipolare Übertragung ergibt sich dann:
     
     \begin{equation*}
@@ -164,7 +164,8 @@
     \end{equation*}
     
     Werden die Sendeformen entgegengesetzt zueinander und mit der selben Bitenergie wie bei der Unipolaren
-    Übertragung gewählt steigt das $SNR_{E Bi}$ auf den vierfachen Wert von dem der Unipolaren Übertragung.\\
+    Übertragung gewählt, steigt das $SNR_{E Bi}$ auf den vierfachen Wert von dem
+    der Unipolaren Übertragung.\\
     
 %     In diesem Termin werden wir ausschließlich Bipolare Übertragung mit verschiedenen Sendeformen realisieren und
 %     miteinander vergleichen. Bei der selben Bitenergie ver
@@ -378,6 +379,21 @@
     
     \subsection{Vorbereitungsaufgabe}
     \begin{quote}
+    
+    Nun werden die entstandenen Wasserfallkurven aus der simulierten
+    Vorbereitungsaufgabe ausgewertet. Es sind drei Kurven, je einer für ein
+    $\roh$, in Bitfehlerrate über dem SNR dargestellt. Wie in der Theorie
+    erläutert, stellt sich ein $\roh$ von $1$ genau dann ein, wenn beide
+    Sendeimpulse übereinander stimmen. Wenn sie genau invertiert zueinander
+    sind, nimmt $\roh$ den Wert $-1$ an. Dies bedeutet, dass der Unterschied
+    zwischen beiden Signalimpulsen zum Zeitpunkt des Abtastens am größten ist.
+    Daher fällt es dem Entscheider leichter das richtige Bit zu
+    identifizieren.\\ 
+    Bei einem $\roh$ von $0$ ist dieser besagte Abstand im Abtastzeitpunkt
+    um eine Bitenergie kleiner, wodurch es für den Entscheider schwieriger wird
+    eine richtige Wahl zwischen einer 1 und einer 0 zu treffen, sobald das
+    Signal mit Rauschen überlagert ist. 
+    
                 \begin{center}
                 \begin{tabular}{ll}
     
@@ -411,6 +427,30 @@
     
                 \end{tabular}
                 \end{center}
+                
+    
+    Diese Beobachtungen können wir machen, wenn wir uns die simulierten
+    Wasserfallkurven angucken. Es fällt auf, dass in der linearen
+    darstellung die blaue Wasserfallkurve, welcher zu $\roh = -1$ gehört, die
+    kleinste Bitfehlerrate beim kleinsten SNR aufweist, was darauf deutet, dass
+    der Entscheider genauer arbeitet, auch wenn das Rauschen im Vergleich am
+    größten ist. Unerwartet ist jedoch der Verlauf der anderen Wasserfallkurven,
+    die ungefähr gleich aussehen. Wir hätten erwartet, dass die Kurve von $\roh
+    = 0$ eine größere Bitfehlerrate bei einem größeren SNR aufweist, was aber
+    nicht der Fall ist. 
+    
+    \TODO{warum ist das so?}
+    
+    Dennoch kann man zusammenfassen, dass alle drei Wasserfallkurven ab einem
+    SNR von ca. $-17 dB$ eine Bitfehlerrate von null besitzen. Das liegt daran,
+    dass das Rauschen so klein wird, dass der Entscheider auch bei zwei nicht so
+    weit auseinander liegenden Signalimpulsen keine Probleme hat die korrekte
+    Entscheidung zu treffen.\\
+    
+    In der logarithmischen Darstellung können wir das gleiche wie in der
+    linearen Darstellung feststellen. Auch wenn das BER logarithmisch ist, sind
+    die Anordnungen der Wasserfallkurven ziemlich gleich geblieben.
+                
     \end{quote}  % Ende Subsection Vorbereitungsaufgabe
     
     \subsection{Aufgabe 2.1 - Aufbau des Versuches}
@@ -475,7 +515,11 @@
     
     \subsection{Aufgabe 2.2 - Bitfehlermessung}
     \begin{quote}
-        \TODO{Aufgabe 2.2} \\
+        
+        Nun betrachten wir die Wasserfallkurven aus der Bitfehlermessung der
+        zweiten Aufgabe. Auch hier erwarten wir ähnliche Ergebnisse wie in der
+        Auswertung der Simulationsaufgabe aus der Vorbereitung:
+        
         \begin{center}
                 \begin{tabular}{ll}
     
@@ -510,6 +554,34 @@
                 \end{tabular}
                 \end{center}
         
+        In der realen Messung der Bitfehlerraten in Abhängigkeit zum SNR
+        erfüllen die drei Wasserfallkurven noch deutlicher unsere Erwartungen.
+        Angefangen mit der blauen Kurve, welche wieder zum $\roh = -1$ gehört,
+        kann man sehr deutlich sehen, dass die Bitfehlerrate bei einem
+        SNR von $-13 dB$ kleiner als die Hälfte der Bitfehlerrate der anderen
+        Wasserfallkurven und somit am geringsten ist. Bei einem SNR von ca. $-8
+        dB$ erreicht diese Wasserfallkurve schon eine Bitfehlerrate von null,
+        womit wir sagen können, dass der Entscheider hier sehr genau gearbeitet
+        hat.\\ 
+        Anders als in der Simulation kann man in der realen Messungen einen sehr
+        kleinen Unterschied zwischen der Wasserfallkurve von $\roh =
+        -\frac{1}{3}$ und $\roh = 0$ sehen. Im Durchschnitt weist die
+        Wasserfallkurve bei null eine etwas höhere Bitfehlerrate bei den
+        untersuchten SNR. Diese Beobachtung erfüllt unsere Erwartungen, die wir
+        bei diesen zwei Korrelationsergebnissen bezüglich der Signalimpulse an den 
+        Entscheider haben.\\
+        Dennoch kann man auch in dieser Darstellung feststellen, dass alle drei
+        Wasserfallkurven an einer SNR von ca. $-2 dB$ keine Bitfehler mehr
+        vorweisen können, da das vorhandene kleine Rauschen den Entscheider
+        nicht mehr beeinträchtigt.\\
+        
+        Auch die logarithmische Darstellung der Bitfehlerratenachse ändert
+        nichts an der Auswertung des Entscheidungsvermögens bei
+        unterschiedlichen SNR-Werten und den untersuchten $\roh$s.
+        
+        \TODO{ich weiß nicht, was man zur log. Darstellung noch sagen kann\ldots}
+        
+        
     \end{quote}  % Ende Auswertung Bitfehlermessung
             
 \end{quote}%beende Auswertung
@@ -520,7 +592,8 @@
 \section{Zusammenfassung}
 \begin{quote}
 
-    \TODO{Zusammenfassug schreiben} \\
+    \TODO{soll ich das machen?}
+    
 \end{quote}%beende Zusammenfassung
          
 
