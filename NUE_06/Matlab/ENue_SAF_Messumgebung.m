@@ -7,16 +7,10 @@ load('SimpleSample.mat')
 
 %% Verlaufseinstellungen
 SAF=1;          % Wenn 0, dann kein SAF
-Simulation=1;   % Wenn 0, dann keine Simulation
+Simulation=0;   % Wenn 0, dann keine Simulation
 
 Noisemessung=15;
-if Simulation ==1
-    Noisewert = [128,230,250,290,350,400,420,430,440,450,460, 470,480, 490,500]; % Simulation
-else
-    Noisewert = [0,3,7,10,12,15,17,20,30,40,50,60,90,100,128]; % Messung
-end
-
-
+Noisewert = [0,3,7,10,12,15,17,20,30,40,50,60,90,100,128];
 %% 
 BER_gemessen_SFFNr_1 = ones(1,Noisemessung);
 BER_gemessen_SFFNr_2 = ones(1,Noisemessung);
@@ -158,9 +152,6 @@ hold on
     plot(SNR_gemessen_SFFNr_3,BER_gemessen_SFFNr_3,'c');
 hold off
 legend('Roh = -1','roh = -1/3','roh = 0')
-title(['Wasserfallkurve linear']);
-xlabel('SNR [dB]');
-ylabel('BER');
 grid();
 
 
@@ -175,12 +166,9 @@ hold on
     semilogy(SNR_gemessen_SFFNr_3,BER_gemessen_SFFNr_3_log,'c');
 hold off
 legend('Roh = -1','roh = -1/3','roh = 0')
-title(['Wasserfallkurve logarithmisch']);
-xlabel('SNR [dB]');
-ylabel('BER [dB]');
 grid();
 
 %% Save
 
-savefile = ['../Messdaten/Simulation',datestr(clock, 'HHMMSS')];
+savefile = ['Messdaten/messwerte',datestr(clock, 'HHMMSS')];
 save(savefile,'SNR_gemessen_SFFNr_1','BER_gemessen_SFFNr_1','SNR_gemessen_SFFNr_2','BER_gemessen_SFFNr_2','SNR_gemessen_SFFNr_3','BER_gemessen_SFFNr_3') 
