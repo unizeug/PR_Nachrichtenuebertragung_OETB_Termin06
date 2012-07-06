@@ -12,11 +12,11 @@
 
 
 \newcommand{\pdftitle}{Nachrichten\"ubertragung\ Praktikum\ 06}
-\newcommand{\prototitle}{Praktikum 06 \\ Digitale Übertragungstechnik: Digitale Empfänger}
+\newcommand{\prototitle}{Praktikum 06 \\ Digitale \"Ubertragungstechnik: Digitale Empf\"anger}
 
 
 \input{../../packages/tu_header_8}
-% \begin{document}
+ \begin{document}
 
 % \lstlistoflistings
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
@@ -66,8 +66,16 @@
 
 \section{Einleitung}
 \begin{quote}
+<<<<<<< HEAD
     
     \TODO{Einleitung schreiben} \\
+=======
+	
+	In diesem Termin beschäftigen wir uns mit einem Signalangepasstem Empfangsfilter. Wir werden eine zufällige Bitfolge
+	mittels eines Formfilters in unterschiedliche Signalformen umwandeln, an der empfängerseite wieder decodieren und
+	abschließend die Bitfehlerrate überprüfen. Abschließend werden wir kontrollieren welchen Einfluss die Wahl der
+	Sendeform auf die Bitfehlerrate hat.
+>>>>>>> refs/heads/master
 
 
 \end{quote}%beende Einleitung
@@ -76,9 +84,18 @@
 
 \section{Motivation}
 \begin{quote}
+<<<<<<< HEAD
     
     
     
+=======
+	Rauschen kann ein übertragenes Signal beeinflussen und dadurch verfälschen. Bei Binärer Übertragung können daraus
+	Bitfehler resultieren, die natürlich unerwünscht sind und vermieden werden sollten. Um daher den Effekt des Rauschens
+	und dadurch auch die Bitfehlerrate zu minimieren wird auf der Seite des Empfängers nach der Übertragung
+	durch den Kanal ein Signalangepasstes Empfangsfilter verwendet.\\
+	Außerdem lässt sich die Bitfehlerrate durch eine geschickte Wahl der Sendeformen weiter minimieren.\\
+	Beides werden wir im folgenen umsetzten und durchmessen. 
+>>>>>>> refs/heads/master
 \end{quote} %section
 
 %--------------------------------------------------------------------
@@ -87,15 +104,96 @@
 
 \section{Theorie}
 \begin{quote}
+<<<<<<< HEAD
 
     
     
     \end{quote}%section
+=======
+    Zur Übertragung einer Bitfolge über einen Kanal werden die einzelnen Bits in zu definierenden Sendeformen
+    umgewandelt und in dieser Form über den Kanal übertragen. Diese Sendeform kann selbstverständlich während der
+    Übertragung durch Rauschen verfälscht werden, was zur folge hat, dass der Empfänger Schwierigkeiten hat zu
+    entscheiden, ob das Übertragene Bit ursprünglich eine binäre 1 oder eine  binäre 0 dargestellt hat. Das verwendete
+    Sende-Empfangssystem sollte darauf ausgelegt sein, den Empfänger diese Entscheidung so leicht wie möglich zu
+    machen.\\
+    Als Aussage über die Qualität eines Sende-Empfangssystem dient der ``Signal-To-Noise-Ratio''($SNR$) sowie die
+    Bitfehlerrate($P_{Bit}$). Ist nämlich das SNR, sprich das Verhältnis zwischen Sendeleistung zu Rauschleistung, am
+    Empfänger möglichst groß fällt es dem Entscheider leichter eine Richtige Entscheidung zu treffen. Die Bitfehlerrate
+    sinkt bei großem SNR, da sie die Fehlerrate pro Bit darstellt. Fällt der Entscheider zunehmend richtige
+    Entscheidungen sinkt daher die Bitfehlerrate.\\
+    Das SNR am Entscheider lässt sich folgendermaßen berechnen:
+    
+    \begin{equation*}
+    	\begin{split}
+    		SNR_E = \frac{|f(t_a)|^2}{\sigma_r^2}
+    	\end{split}
+    \end{equation*}
+    
+    $|f(t_a)|^2$ stellt in diesem Fall die Amplitude des Nutzsignals zum gegebenen Abtastzeitpunkt und $\sigma_r^2$ die
+    Leistung des Rauschens dar.\\
+    
+    Für die weitere Betrachtung ist es notwendig zwischen Unipolarer und Bipolarer Übertragung zu unterscheiden. Die
+    Unipolate Übertragung hat den Vorteil, dass sie mit weniger Aufwand umgesetzt werden kann, da nur eine Sendeform für
+    eine der beiden Zustände notwendig ist. Der andere Zustand wird dann durch eine 0 übertragen. Dem entgegen nutzt die
+    Bipolare Übertragung für jeden Zustand eine eigene Sendeform. Logischerweise ist diese Implementierung aufwendiger.
+    Jedoch zahlt sich dieser Aufwand aus, da der Entscheider SNR für Bipolare Übertragung verbessert.\\
+    Um diese Verbesserung mathematisch zu erfassen betrachten wir die Bitenergie($E_b$), die Leistungsdichte von Weißem
+    Rauschen($\frac{N_0}{2}$) sowie den Kreuzkorrelationskoeffizenten ($\rho$) ein. Die Bitenergie $E_b$ ist die Energie
+    eines Sendeimpulses und errechnet sich mit: \cite{Bitenergie}
+    
+    \begin{equation*}
+    	\begin{split}
+    		E_b = \int_{-\infty}^{\infty} \left | s(t)|^2 \right | \mathrm dt
+    	\end{split}
+        
+    \end{equation*}
+    
+    
+    Der Kreuzkorrelationskoeffizient $\rho$ stellt die normierte Kreuzkorrelation zwischen den zwei Sendeimpulsen dar.\cite{kreuz}
+    
+    \begin{equation*}
+    	\begin{split}
+    		\rho = \frac{1}{E_b} \int_{0}^{T_{Bit}} s_0(t) \cdot s_1(t) \mathrm dt
+    	\end{split}
+    \end{equation*}
+    
+    Abhängig von den Formen der Sendeimpulse kann dieser Koeffizent Werte von $1$, beiden Signalformen stimmen überein,
+    bis $-1$, die beiden Signalformen sind genau invertiert zueinander, annehmen.\\
+        
+    Nun lässt sich mit einigen Umformungen lässt sich die oben aufgeführte Formel für das Entscheider $SNR$ umformen.\\
+    Für Unipolare Übertragung ergibt sich dann:
+    
+    \begin{equation*}
+    	\begin{split}
+    		max\{SNR_E\} = \frac{2 E_b}{N_0}
+    	\end{split}
+    \end{equation*}
+    
+    Im Gegensatz dazu ergibt sich für die Bipolate Übertragung:
+    
+    \begin{equation*}
+    	\begin{split}
+    		SNR = \frac{4 E_b}{N_0} (1-\rho)
+    	\end{split}
+    \end{equation*}
+    
+    Werden die Sendeformen entgegengesetzt zueinander und mit der selben Bitenergie wie bei der Unipolaren
+    Übertragung gewählt steigt das $SNR_{E Bi}$ auf den vierfachen Wert von dem der Unipolaren Übertragung.\\
+    
+%     In diesem Termin werden wir ausschließlich Bipolare Übertragung mit verschiedenen Sendeformen realisieren und
+%     miteinander vergleichen. Bei der selben Bitenergie ver
+    
+    
+    
+	
+\end{quote}%section Theorie
+>>>>>>> refs/heads/master
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
 \section{Vorbereitungsaufgabe}
 \begin{quote}
+<<<<<<< HEAD
     
     Zunächst sollten wir uns als Vorbereitung für den Praktikumstermin mit dem
     Inhalt des Kapitels zu optimalen Empfängerstrukturen aus dem Skript vertraut
@@ -168,6 +266,49 @@
     
     \end{quote}%Theorie
     % beenden
+=======
+	
+	Zunächst sollten wir uns als Vorbereitung für den Praktikumstermin mit dem
+	Inhalt des Kapitels zu optimalen Empfängerstrukturen aus dem Skript vertraut
+	machen und nachvollziehen können.\\
+	
+	Als nächstes sollte mit Hilfe einer Matlab Datei bipolare Sendeimpulse
+	für eine bipolare Übertragung definiert werden. Diese Sendeimpulse sollten als
+	Vektoren SF0 und SF1 mit $-1$ und $1$ ein Kreuzkorrelationsergebnis von $\rho
+	= 0, -\frac{1}{3}$ oder $-1$ liefern, wobei die Vektoren für $\rho = -1$ und
+	$\rho = -\frac{1}{3}$ drei Werte und für $\rho = 0$ vier Werte besitzen
+	müssen.\\
+	Als Kontrolle dafür, sollte in der Matlab-Datei tatsächlich die
+	Kreuzkorrelation durchgeführt und das Ergebnis untersucht werden. Außerdem wird
+	die Bitenergie $E_B$ der Sendeimpulse berechnet, wobei die Vektoren als
+	zeitkontinuierliche Spannungsverläufe der Dauer $T_B$ angenommen wird, bei
+	denen Die Spannungsamplituden nur $+1\ V$ oder $-1\ V$ betragen können.
+	Es sollte beachtet werden, dass $T_{SF} = 20\mu s$ konstant bleiben und sich
+	somit das $T_B$ mit $T_B = 2 \cdot N \cdot \T_{SF}$ mit N Werten in SF0 bzw.
+	SF1 berechnen lässt. Als Bedingung sollte noch gelten, dass die Bitenergien für
+	SF0 und SF1 als Paar für ein $\rho$ gleich sein sollten.\\
+	
+	Als Vorbereitung für den praktischen Teil des Versuchs, sollte eine Funktion
+	SAF implementiert werden, welche einen SAF-Empfänger in Matlab realiseren soll.
+	Der Input besteht aus DataSamples, ClkSamples und SFSamples, welche gegeben
+	sind. der Output dagegen soll dabei der Vektor Values sein, in der die Werte
+	nach dem signalangepasstem Filter eingetragen sein sollen.\\
+	\TODO{hier noch genauer erklären wie die Funktion funzt}
+	
+	
+	Nach der Implementierung der SAF-Funktion sollten wir uns mit dem
+	Versuchsaufbau und der Durchführung vertraut machen und  ein Blockschaltbild
+	dazu entwerfen. Die genaue Vorgehensweise ist in dem Abschnitt Durchführung
+	detaliert erläutert. Hier ist das entworfene Blockschaltbild zu dem Versuch:\\
+	
+	\TODO{Blockschaltbild zeichnen und einfügen}
+	
+	
+	
+	
+	\end{quote}%Theorie
+	% beenden
+>>>>>>> refs/heads/master
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
@@ -288,10 +429,10 @@
 
 
 \begin{thebibliography}{999}
-%      \bibitem {PCM-Uebertragung} Prof. Dr.-Ing. Sikora, Thomas; Prof. Dr.-Ing. Noll, Peter: Einführung in die
-%      Nachrichtenübertragung, S.272
-%     \bibitem {Digitalisierung_des_Signals} Prof. Dr.-Ing. Sikora, Thomas; Prof. Dr.-Ing. Noll, Peter: Einführung in die
-%      Nachrichtenübertragung, S.273
+      \bibitem {Bitenergie} Prof. Dr.-Ing. Sikora, Thomas; Prof. Dr.-Ing. Noll, Peter: Einführung in die
+      Nachrichtenübertragung, S.356
+      \bibitem {kreuz} Prof. Dr.-Ing. Sikora, Thomas; Prof. Dr.-Ing. Noll, Peter: Einführung in die
+      Nachrichtenübertragung, S.363
 %     \bibitem {PCM_Decodierung} Prof. Dr.-Ing. Sikora, Thomas; Prof. Dr.-Ing. Noll, Peter: Einführung in die
 %      Nachrichtenübertragung, S.276
 %      
