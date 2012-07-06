@@ -352,9 +352,9 @@
     
         Das Ergebnis der Bitfehlermessung sollte die Darstellung von
         unterschiedlichen Wassefallkurven sein. Dafür wurden am Ende die
-        Wasserfallkurven für die drei unterschiedlichen $\roh$ untersucht,
+        Wasserfallkurven für die drei unterschiedlichen $\rho$ untersucht,
         welche wir bereits in der Vorbereitung untersucht hatten. Es wurden die
-        BER-Messungen aller drei $\roh$-Werte mit $15$ verschiedenen, sinnvollen
+        BER-Messungen aller drei $\rho$-Werte mit $15$ verschiedenen, sinnvollen
         Verstärkungsfaktoren für das Rauschen durchgeführt. Dabei sollten wir
         beachten, dass für größere SNR-Werte die Steigung stärker und eine BER
         von $0$ für ein vorhandenes Rauschen nicht aussagekräftig ist, wenn die
@@ -362,7 +362,7 @@
         wurden die Bitfehlerraten der übertragenen Informationsbits für
         den optimalen Abtastzeitpunkt $T_B$ gemessen und in ein Diagramm
         zusammengefasst. Dieses Diagramm enthält nun die Wasserfallkurven von
-        $\roh = -1$, von $\roh = -\frac{1}{3}$ und von $\roh = 0$ mit $15$
+        $\rho = -1$, von $\rho = -\frac{1}{3}$ und von $\rho = 0$ mit $15$
         Messwerten.\\
         Die Ergebnisse wurden geplottet und in der Auswertung diskutiert.  
           
@@ -382,14 +382,14 @@
     
     Nun werden die entstandenen Wasserfallkurven aus der simulierten
     Vorbereitungsaufgabe ausgewertet. Es sind drei Kurven, je einer für ein
-    $\roh$, in Bitfehlerrate über dem SNR dargestellt. Wie in der Theorie
-    erläutert, stellt sich ein $\roh$ von $1$ genau dann ein, wenn beide
+    $\rho$, in Bitfehlerrate über dem SNR dargestellt. Wie in der Theorie
+    erläutert, stellt sich ein $\rho$ von $1$ genau dann ein, wenn beide
     Sendeimpulse übereinander stimmen. Wenn sie genau invertiert zueinander
-    sind, nimmt $\roh$ den Wert $-1$ an. Dies bedeutet, dass der Unterschied
+    sind, nimmt $\rho$ den Wert $-1$ an. Dies bedeutet, dass der Unterschied
     zwischen beiden Signalimpulsen zum Zeitpunkt des Abtastens am größten ist.
     Daher fällt es dem Entscheider leichter das richtige Bit zu
     identifizieren.\\ 
-    Bei einem $\roh$ von $0$ ist dieser besagte Abstand im Abtastzeitpunkt
+    Bei einem $\rho$ von $0$ ist dieser besagte Abstand im Abtastzeitpunkt
     um eine Bitenergie kleiner, wodurch es für den Entscheider schwieriger wird
     eine richtige Wahl zwischen einer 1 und einer 0 zu treffen, sobald das
     Signal mit Rauschen überlagert ist. 
@@ -432,11 +432,11 @@
     
     Diese Beobachtungen können wir machen, wenn wir uns die simulierten
     Wasserfallkurven angucken. Es fällt auf, dass in der linearen
-    darstellung die blaue Wasserfallkurve, welcher zu $\roh = -1$ gehört, die
+    darstellung die blaue Wasserfallkurve, welcher zu $\rho = -1$ gehört, die
     kleinste Bitfehlerrate beim kleinsten SNR aufweist, was darauf deutet, dass
     der Entscheider genauer arbeitet, auch wenn das Rauschen im Vergleich am
     größten ist. Unerwartet ist jedoch der Verlauf der anderen Wasserfallkurven,
-    die ungefähr gleich aussehen. Wir hätten erwartet, dass die Kurve von $\roh
+    die ungefähr gleich aussehen. Wir hätten erwartet, dass die Kurve von $\rho
     = 0$ eine größere Bitfehlerrate bei einem größeren SNR aufweist, was aber
     nicht der Fall ist. 
     
@@ -559,7 +559,7 @@
         
         In der realen Messung der Bitfehlerraten in Abhängigkeit zum SNR
         erfüllen die drei Wasserfallkurven noch deutlicher unsere Erwartungen.
-        Angefangen mit der blauen Kurve, welche wieder zum $\roh = -1$ gehört,
+        Angefangen mit der blauen Kurve, welche wieder zum $\rho = -1$ gehört,
         kann man sehr deutlich sehen, dass die Bitfehlerrate bei einem
         SNR von $-13 dB$ kleiner als die Hälfte der Bitfehlerrate der anderen
         Wasserfallkurven und somit am geringsten ist. Bei einem SNR von ca. $-8
@@ -567,8 +567,8 @@
         womit wir sagen können, dass der Entscheider hier sehr genau gearbeitet
         hat.\\ 
         Anders als in der Simulation kann man in der realen Messungen einen sehr
-        kleinen Unterschied zwischen der Wasserfallkurve von $\roh =
-        -\frac{1}{3}$ und $\roh = 0$ sehen. Im Durchschnitt weist die
+        kleinen Unterschied zwischen der Wasserfallkurve von $\rho =
+        -\frac{1}{3}$ und $\rho = 0$ sehen. Im Durchschnitt weist die
         Wasserfallkurve bei null eine etwas höhere Bitfehlerrate bei den
         untersuchten SNR. Diese Beobachtung erfüllt unsere Erwartungen, die wir
         bei diesen zwei Korrelationsergebnissen bezüglich der Signalimpulse an den 
@@ -580,7 +580,7 @@
         
         Auch die logarithmische Darstellung der Bitfehlerratenachse ändert
         nichts an der Auswertung des Entscheidungsvermögens bei
-        unterschiedlichen SNR-Werten und den untersuchten $\roh$s.
+        unterschiedlichen SNR-Werten und den untersuchten $\rho$s.
         
         \TODO{ich weiß nicht, was man zur log. Darstellung noch sagen kann\ldots}
         
