@@ -66,8 +66,8 @@
 
 \section{Einleitung}
 \begin{quote}
-	
-	\TODO{Einleitung schreiben} \\
+    
+    \TODO{Einleitung schreiben} \\
 
 
 \end{quote}%beende Einleitung
@@ -76,9 +76,9 @@
 
 \section{Motivation}
 \begin{quote}
-	
-	
-	
+    
+    
+    
 \end{quote} %section
 
 %--------------------------------------------------------------------
@@ -88,50 +88,50 @@
 \section{Theorie}
 \begin{quote}
 
-	
-	
-	\end{quote}%section
+    
+    
+    \end{quote}%section
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
 \section{Vorbereitungsaufgabe}
 \begin{quote}
-	
-	Zunächst sollten wir uns als Vorbereitung für den Praktikumstermin mit dem
-	Inhalt des Kapitels zu optimalen Empfängerstrukturen aus dem Skript vertraut
-	machen und nachvollziehen können.\\
-	
-	Als nächstes sollte mit Hilfe einer Matlab Datei bipolare Sendeimpulse
-	für eine bipolare Übertragung definiert werden. Diese Sendeimpulse sollten als
-	Vektoren SF0 und SF1 mit $-1$ und $1$ ein Kreuzkorrelationsergebnis von $\rho
-	= 0, -\frac{1}{3}$ oder $-1$ liefern, wobei die Vektoren für $\rho = -1$ und
-	$\rho = -\frac{1}{3}$ drei Werte und für $\rho = 0$ vier Werte besitzen
-	müssen.\\
-	Als Kontrolle dafür, sollte in der Matlab-Datei tatsächlich die
-	Kreuzkorrelation durchgeführt und das Ergebnis untersucht werden. Außerdem wird
-	die Bitenergie $E_B$ der Sendeimpulse berechnet, wobei die Vektoren als
-	zeitkontinuierliche Spannungsverläufe der Dauer $T_B$ angenommen wird, bei
-	denen Die Spannungsamplituden nur $+1\ V$ oder $-1\ V$ betragen können.
-	Es sollte beachtet werden, dass $T_{SF} = 20\mu s$ konstant bleiben und sich
-	somit das $T_B$ mit $T_B = 2 \cdot N \cdot \T_{SF}$ mit N Werten in SF0 bzw.
-	SF1 berechnen lässt. Als Bedingung sollte noch gelten, dass die Bitenergien für
-	SF0 und SF1 als Paar für ein $\rho$ gleich sein sollten.\\
-	
-	Als Vorbereitung für den praktischen Teil des Versuchs, sollte eine Funktion
-	SAF implementiert werden, welche einen SAF-Empfänger in Matlab realiseren soll.
-	Der Input besteht aus DataSamples, ClkSamples und SFSamples, welche gegeben
-	sind. der Output dagegen soll dabei der Vektor Values sein, in der die Werte
-	nach dem signalangepasstem Filter eingetragen sein sollen.\\
-	\TODO{Boris: kannst du hier noch genauer erklären wie die Funktion funzt?}
-	
-	
-	Nach der Implementierung der SAF-Funktion sollten wir uns mit dem
-	Versuchsaufbau und der Durchführung vertraut machen und  ein Blockschaltbild
-	dazu entwerfen. Die genaue Vorgehensweise ist in dem Abschnitt Durchführung
-	detaliert erläutert. Hier ist das entworfene Blockschaltbild zu dem Versuch:\\
-	
-	\begin{figure}[H]
-        \centering 
+    
+    Zunächst sollten wir uns als Vorbereitung für den Praktikumstermin mit dem
+    Inhalt des Kapitels zu optimalen Empfängerstrukturen aus dem Skript vertraut
+    machen und nachvollziehen können.\\
+    
+    Als nächstes sollte mit Hilfe einer Matlab Datei bipolare Sendeimpulse
+    für eine bipolare Übertragung definiert werden. Diese Sendeimpulse sollten als
+    Vektoren SF0 und SF1 mit $-1$ und $1$ ein Kreuzkorrelationsergebnis von $\rho
+    = 0, -\frac{1}{3}$ oder $-1$ liefern, wobei die Vektoren für $\rho = -1$ und
+    $\rho = -\frac{1}{3}$ drei Werte und für $\rho = 0$ vier Werte besitzen
+    müssen.\\
+    Als Kontrolle dafür, sollte in der Matlab-Datei tatsächlich die
+    Kreuzkorrelation durchgeführt und das Ergebnis untersucht werden. Außerdem wird
+    die Bitenergie $E_B$ der Sendeimpulse berechnet, wobei die Vektoren als
+    zeitkontinuierliche Spannungsverläufe der Dauer $T_B$ angenommen wird, bei
+    denen Die Spannungsamplituden nur $+1\ V$ oder $-1\ V$ betragen können.
+    Es sollte beachtet werden, dass $T_{SF} = 20\mu s$ konstant bleiben und sich
+    somit das $T_B$ mit $T_B = 2 \cdot N \cdot \T_{SF}$ mit N Werten in SF0 bzw.
+    SF1 berechnen lässt. Als Bedingung sollte noch gelten, dass die Bitenergien für
+    SF0 und SF1 als Paar für ein $\rho$ gleich sein sollten.\\
+    
+    Als Vorbereitung für den praktischen Teil des Versuchs, sollte eine Funktion
+    SAF implementiert werden, welche einen SAF-Empfänger in Matlab realiseren soll.
+    Der Input besteht aus DataSamples, ClkSamples und SFSamples, welche gegeben
+    sind. der Output dagegen soll dabei der Vektor Values sein, in der die Werte
+    nach dem signalangepasstem Filter eingetragen sein sollen.\\
+    \TODO{Boris: kannst du hier noch genauer erklären wie die Funktion funzt?}
+    
+    
+    Nach der Implementierung der SAF-Funktion sollten wir uns mit dem
+    Versuchsaufbau und der Durchführung vertraut machen und  ein Blockschaltbild
+    dazu entwerfen. Die genaue Vorgehensweise ist in dem Abschnitt Durchführung
+    detaliert erläutert. Hier ist das entworfene Blockschaltbild zu dem Versuch:\\
+    
+    \begin{figure}[H]
+        \centering
             \includegraphics[scale=0.45, trim = 1.5cm 15cm 1cm 0cm,
             clip]{./Bilder/Blockschaltbild.png}
                 \caption{Blockschaltbild des Versuchsaufbau}
@@ -166,8 +166,8 @@
     Rauschen variiert werden müsste, damit die Wasserfallkurve ausreichend ermittelt werden kann.
     Im Versuch beträgt das Rauschen dabei $-6 dB$.
     
-	\end{quote}%Theorie
-	% beenden
+    \end{quote}%Theorie
+    % beenden
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
@@ -253,7 +253,7 @@
     \begin{quote}
         \TODO{Aufgabe 2.2} \\
     \end{quote}  % Ende Auswertung Bitfehlermessung
-         	
+            
 \end{quote}%beende Auswertung
 
 %--------------------------------------------------------------------
@@ -288,4 +288,4 @@
 \end{thebibliography}
 
 \end{document}
-  	    
+        
