@@ -68,8 +68,9 @@
 \begin{quote}
 
 	In diesem Termin beschäftigen wir uns mit einem Signalangepasstem Empfangsfilter. Wir werden eine zufällige Bitfolge
-	mittels eines Formfilters in unterschiedliche Signalformen umwandeln, an der empfängerseite wieder decodieren und
-	abschließend die Bitfehlerrate überprüfen. Abschließend werden wir kontrollieren welchen Einfluss die Wahl der
+	mittels eines Formfilters in unterschiedliche Signalformen umwandeln, an der
+	Empfängerseite wieder decodieren und abschließend die Bitfehlerrate überprüfen. 
+	Abschließend werden wir kontrollieren welchen Einfluss die Wahl der
 	Sendeform auf die Bitfehlerrate hat.
 
 
@@ -438,9 +439,24 @@
     größten ist. Unerwartet ist jedoch der Verlauf der anderen Wasserfallkurven,
     die ungefähr gleich aussehen. Wir hätten erwartet, dass die Kurve von $\rho
     = 0$ eine größere Bitfehlerrate bei einem größeren SNR aufweist, was aber
-    nicht der Fall ist. 
+    nicht der Fall ist.\\
     
-    \TODO{warum ist das so?}
+    Die Erklärung dafür liegt in der verwendeten Anzahl der Bauds für die
+    Signalimpulse. Für ein $\rho$ von $-\frac{1}{3}$ verwendeten wir drei
+    Bauds, wohingegen für $\rho = 0$ vier Bauds verwendet wurden. Damit hatten
+    SF0 und SF1 je vier Bits und somit eine höhere Bitenergie $E_B$. In
+    Zusammenhang mit der Formel
+    
+    \begin{equation*}
+        \begin{split}
+            SNR = \frac{4 E_B}{N_0}\cdot (1-\rho)
+        \end{split}
+    \end{equation*}
+    
+    sieht man, dass eine höhere Bitenergie einen höheren SNR zur Folge hat,
+    womit wiederum die Bitfehlerrate sinkt. Daher ist der Verlauf der
+    Wasserfallkurve für $\rho = 0$ günstiger als der Verlauf der Kurve für
+    $\rho = -\frac{1}{3}$. Somit ist dieser Vergleich nicht sehr geeignet.\\
     
     Dennoch kann man zusammenfassen, dass alle drei Wasserfallkurven ab einem
     SNR von ca. $-17 dB$ eine Bitfehlerrate von null besitzen. Das liegt daran,
@@ -573,6 +589,7 @@
         untersuchten SNR. Diese Beobachtung erfüllt unsere Erwartungen, die wir
         bei diesen zwei Korrelationsergebnissen bezüglich der Signalimpulse an den 
         Entscheider haben.\\
+        
         Dennoch kann man auch in dieser Darstellung feststellen, dass alle drei
         Wasserfallkurven an einer SNR von ca. $-2 dB$ keine Bitfehler mehr
         vorweisen können, da das vorhandene kleine Rauschen den Entscheider
@@ -582,7 +599,6 @@
         nichts an der Auswertung des Entscheidungsvermögens bei
         unterschiedlichen SNR-Werten und den untersuchten $\rho$s.
         
-        \TODO{ich weiß nicht, was man zur log. Darstellung noch sagen kann\ldots}
         
         
     \end{quote}  % Ende Auswertung Bitfehlermessung
@@ -595,7 +611,29 @@
 \section{Zusammenfassung}
 \begin{quote}
 
-    \TODO{soll ich das machen?}
+    Dieses Praktikum vermittelte uns die Notwendigkeit eines signalangepassten
+    Filter bei einer Signalübertragung durch einen Kanal, welcher nichtidealer
+    Weise dem Signal Rauschen hinzufügt. Wir konnten durch den SAF die
+    ankommenden Signalformen decodieren und kontrollieren, welchen Einfluss die
+    Wahl der Sendeform auf die Bitfehlerrate in Abhängigkeit des anliegenden
+    Rauschens hat. Außerdem erarbeiteten wir bei der Binären Übertragung den
+    Unterschied zwischen einer Bipolarität und einer Unipolarität der
+    Sendeimpulse, sowie die Bedeutung der richtigen Wahl der Sendeformen für die
+    Reduzierung der Bitfehler beim Entscheider.\\
+    
+    Die ermittelten Ergebnisse in Form von Wasserfallkurven, welche durch
+    meherere Messungen bei unterschiedlichen Rauschverstärkungsfaktoren
+    entstanden und den Veraluf der Bitfehlerraten über dem SNR für
+    verschiedene Kreuzkorrelationsergebnisse der gewählten
+    Sendeformen verdeutlichen, überzeugten uns von dem Einfluss, welchen die
+    gewählten Sendeformen auf die korrekte Arbeitsweise des Entscheiders haben
+    können.\\
+   
+    Zusammenfassend kann man sagen, dass dieses Praktikum die Beweise
+    dafür geliefert hat, dass es bei einer digitalen Signalübertragung viele
+    verschiedene Möglichkeiten gibt, Verfälschungen und Rauschen am Empfänger
+    zu korrigieren.
+    Somit ist die Effektivität der digitalen Übertragungstechnik bestätigt.
     
 \end{quote}%beende Zusammenfassung
          
